@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual env
+/venv/
+.env
+
+
+# Datasets and outputs
+/dataset/
+/runs/
+/videos/
+
+
+# Models
+/models/
+*.pt
+*.onnx
+*.engine
+
+
+# Generated archives
+*.zip
+
+
+# IDE
+.vscode/
+.idea/
+
+
+# ROS2
+/build/
+/install/
+/log/
+
+/src/*
+!/src/*/
+/src/best_openvino_model
+/src/__pycache__
+kernel.errors.txt
+/src/beer_robot_ros2/original_robot_logic_ncnn_optimized.py
