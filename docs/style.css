@@ -1,0 +1,29 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 900px;
+    margin: auto;
+    padding: 40px;
+    background: #111;
+    color: white;
+}
+
+
+.hero {
+    text-align: center;
+    margin-top: 80px;
+}
+
+
+h1 {
+    font-size: 60px;
+}
+
+
+a {
+    display: inline-block;
+    padding: 15px 25px;
+    background: #ffcc00;
+    color: black;
+    text-decoration: none;
+    border-radius: 10px;
+}
