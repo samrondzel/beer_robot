@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BeerBot Lab Notes</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="nav">
+    <a class="logo" href="index.html">🍺🤖 BeerBot</a>
+    <div class="links">
+      <a href="journey.html">Journey</a>
+      <a href="notes.html">Lab Notes</a>
+      <a href="https://github.com/YOUR_GITHUB" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://instagram.com/YOUR_INSTAGRAM" target="_blank" rel="noopener noreferrer">Instagram</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="page-hero">
+      <p class="eyebrow">AI Robotics Lab Notes</p>
+      <h1>Free resources from the build</h1>
+      <p>
+        These notes explain the ideas behind the robot. They are public on purpose:
+        the future build kit will package the full implementation, wiring, setup, and troubleshooting.
+      </p>
+    </section>
+
+    <section class="note-list">
+
+      <article class="note-card" id="tracker-node">
+        <div class="tag">Tracking / ROS2</div>
+        <h2>Tracker Node — from YOLO packet to stable target</h2>
+        <p>
+          This resource explains the pipeline inside the tracker node. It starts from a raw YOLO packet
+          on <code>/detections_raw</code>, picks the best beer detection, converts the bounding box into a center point,
+          runs Kalman prediction and update, then converts the filtered center back into a bounding box.
+        </p>
+        <p>
+          Why it matters: raw detections jump around. The rest of the robot needs a stable target and velocity estimate,
+          not noisy frame-by-frame boxes.
+        </p>
+        <img src="assets/tracker-node-pipeline.png" alt="Tracker node explanation diagram" />
+      </article>
+
+      <article class="note-card" id="kalman-filter">
+        <div class="tag">State estimation</div>
+        <h2>Kalman Filter — prediction and correction</h2>
+        <p>
+          This deeper diagram shows the actual math idea: the state vector stores position and velocity
+          <code>[x, y, vx, vy]</code>. Matrix <code>A</code> predicts natural motion, matrix <code>B</code>
+          can represent the effect of robot actions, <code>H</code> maps full state into camera space,
+          and the Kalman gain decides how much to trust the camera versus the prediction.
+        </p>
+        <p>
+          In BeerBot terms: the camera says where the beer seems to be; the filter combines that with memory
+          of previous movement to estimate where the beer probably is.
+        </p>
+        <img src="assets/kalman-filter-deep-dive.png" alt="Kalman filter full explanation diagram" />
+      </article>
+
+      <article class="note-card" id="ros2-architecture">
+        <div class="tag">ROS2 architecture</div>
+        <h2>ROS2 Nodes and Topics — modular robot software</h2>
+        <p>
+          The robot pipeline is split into small independent nodes. The camera node publishes images,
+          the detection node publishes raw boxes, the tracker node publishes smoothed detections,
+          and the target manager publishes a command-oriented target state.
+        </p>
+        <p>
+          This is the first step from “script that runs everything” to a robotics system that can grow.
+        </p>
+        <img src="assets/ros2-architecture.png" alt="ROS2 architecture diagram" />
+      </article>
+
+      <article class="note-card" id="esp32-bridge">
+        <div class="tag">Embedded systems</div>
+        <h2>Raspberry Pi ↔ ESP32 — the brain-body link</h2>
+        <p>
+          Raspberry Pi handles expensive high-level work: camera, AI, ROS2 and decisions.
+          ESP32 handles low-level real-time-ish control: parsing commands, generating PWM,
+          and later reading encoders.
+        </p>
+        <p>
+          This split is the bridge from AI software to physical motion.
+        </p>
+        <img src="assets/day19-ros2-esp32-command-protocol.png" alt="Raspberry Pi to ESP32 command bridge diagram" />
+      </article>
+
+    </section>
+  </main>
+
+  <footer>
+    <p>Public notes = understanding. Future kit = repeatable build.</p>
+  </footer>
+</body>
+</html>

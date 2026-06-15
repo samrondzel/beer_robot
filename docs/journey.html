@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BeerBot Journey</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="nav">
+    <a class="logo" href="index.html">🍺🤖 BeerBot</a>
+    <div class="links">
+      <a href="journey.html">Journey</a>
+      <a href="notes.html">Lab Notes</a>
+      <a href="https://github.com/YOUR_GITHUB" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://instagram.com/YOUR_INSTAGRAM" target="_blank" rel="noopener noreferrer">Instagram</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="page-hero">
+      <p class="eyebrow">Build journey</p>
+      <h1>From zero to “I am a beer robot”</h1>
+      <p>
+        A day-by-day record of turning a software project into a physical robot:
+        vision, ROS2, tracking, embedded control, and motor commands.
+      </p>
+    </section>
+
+    <section class="timeline">
+
+      <article class="day-card" id="day10">
+        <div class="day-meta">Earlier milestone</div>
+        <h2>ROS2 architecture — splitting the robot brain into nodes</h2>
+        <p>
+          This diagram shows the first clean software architecture: camera frames are published,
+          the detector node turns images into raw detections, the tracker node smooths them,
+          and the target manager publishes a higher-level target state.
+        </p>
+        <p>
+          The important shift: instead of one huge Python script, the robot becomes a modular ROS2 system.
+        </p>
+        <img src="assets/ros2-architecture.png" alt="ROS2 architecture diagram for BeerBot" />
+      </article>
+
+      <article class="day-card" id="day14">
+        <div class="day-meta">Day 14</div>
+        <h2>Kalman tracking — the robot learns to predict</h2>
+        <p>
+          YOLO gives noisy boxes. The tracker node converts the box to its center, predicts where the beer
+          should be next, compares that prediction with the camera measurement, and publishes a smoother target.
+        </p>
+        <p>
+          This made the detection stream useful for control: less jumping, better velocity estimate,
+          and a more stable target for the next node.
+        </p>
+        <img src="assets/tracker-node-pipeline.png" alt="Tracker node pipeline from raw detection to tracked output" />
+      </article>
+
+      <article class="day-card" id="day17">
+        <div class="day-meta">Day 17</div>
+        <h2>Raspberry Pi talks to ESP32</h2>
+        <p>
+          The problem was simple but important: the Raspberry Pi needed to see the ESP32 over USB and communicate
+          with it reliably. I checked USB detection, kernel logs, ESP32 flash info, flashed MicroPython,
+          and opened the REPL.
+        </p>
+        <p>
+          The milestone: the high-level computer can now talk to the low-level controller.
+        </p>
+        <img src="assets/day17-raspberry-pi-esp32.png" alt="Raspberry Pi detects and communicates with ESP32" />
+      </article>
+
+      <article class="day-card" id="day19">
+        <div class="day-meta">Day 19</div>
+        <h2>AI decision → ROS2 → ESP32 command protocol</h2>
+        <p>
+          This day replaced “hello world” with a real robot command protocol. The ROS2 target manager publishes
+          an abstract robot state, the ESP32 bridge node subscribes to it, converts it into a compact serial command,
+          and sends it to ESP32 C++ firmware.
+        </p>
+        <p>
+          The robot does not just detect anymore. It starts producing commands that hardware can understand.
+        </p>
+        <img src="assets/day19-ros2-esp32-command-protocol.png" alt="ROS2 to ESP32 command protocol diagram" />
+      </article>
+
+      <article class="day-card" id="day20">
+        <div class="day-meta">Day 20</div>
+        <h2>From AI command to PWM signal</h2>
+        <p>
+          The AI command <code>MOVE 0.50 0.20</code> becomes left and right motor speeds.
+          ESP32 converts those numbers into PWM duty cycles, for example 50% and 20% power,
+          which later drive the TB6612FNG motor driver.
+        </p>
+        <p>
+          The real lesson: software decisions must eventually become electrical pulses.
+        </p>
+        <img src="assets/day20-ai-command-to-pwm.png" alt="AI command converted into PWM signal on ESP32" />
+      </article>
+
+    </section>
+  </main>
+
+  <footer>
+    <p>Next: connect PWM to TB6612FNG and real motors.</p>
+  </footer>
+</body>
+</html>

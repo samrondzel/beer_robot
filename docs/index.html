@@ -1,182 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-
-    <title>AI Beer Robot</title>
-
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BeerBot — AI Robotics Journey</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
-
 <body>
-
-<nav>
-    <div class="logo">
-        BeerBot
-    </div>
-
+  <nav class="nav">
+    <a class="logo" href="index.html">🍺🤖 BeerBot</a>
     <div class="links">
-        <a href="https://github.com/samrondzel/beer_robot" target="_blank">GitHub</a>
-        <a href="https://www.linkedin.com/in/samrondel/" target="_blank">LinkedIn</a>
-        <a href="https://www.instagram.com/samrondzel/" target="_blank">Instagram</a>
+      <a href="journey.html">Journey</a>
+      <a href="notes.html">Lab Notes</a>
+      <a href="https://github.com/YOUR_GITHUB" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://instagram.com/YOUR_INSTAGRAM" target="_blank" rel="noopener noreferrer">Instagram</a>
     </div>
-</nav>
+  </nav>
 
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Software Engineer → AI Robotics Engineer</p>
+      <h1>Building an autonomous AI robot 🤖🍺</h1>
+      <p class="hero-text">
+        The first mission: build a robot that can see a beer bottle, track it, make decisions,
+        send commands to embedded hardware, and eventually bring me a beer.
+      </p>
+      <div class="buttons">
+        <a class="primary" href="journey.html">See the build journey</a>
+        <a class="secondary" href="notes.html">Open lab notes</a>
+      </div>
+    </section>
 
-<section class="hero">
-
-    <div>
-
-        <h1>
-            Building an Autonomous AI Robot
-        </h1>
-
+    <section class="section two-col">
+      <div>
+        <p class="eyebrow">Current project</p>
+        <h2>BeerBot is my public robotics lab.</h2>
         <p>
-            My journey from Software Engineer to AI Robotics Engineer.
-            Building everything from scratch using Computer Vision,
-            ROS2 and Embedded Systems.
+          I am documenting the real transformation from software-only engineering into robotics:
+          computer vision, ROS2, state estimation, embedded systems, motor control, and eventually navigation.
         </p>
-
-
-        <div class="buttons">
-
-            <a class="primary" href="https://www.instagram.com/samrondzel/" target="_blank">
-                Follow the journey
-            </a>
-
-            <a class="secondary" href="https://github.com/samrondzel/beer_robot" target="_blank">
-                View GitHub
-            </a>
-
-        </div>
-
-    </div>
-
-
-    <div class="robot-card">
-
-        <h2>Current status</h2>
-
-        <p>✅ YOLO Detection</p>
-        <p>✅ Raspberry Pi AI</p>
-        <p>✅ ROS2 Architecture</p>
-        <p>🚧 ESP32 Motor Control</p>
-        <p>⬜ Autonomous Navigation</p>
-
-    </div>
-
-
-</section>
-
-
-
-<section>
-
-<h2>System Architecture</h2>
-
-
-<div class="architecture">
-
-Camera 📷
-
-↓
-
-YOLO AI 🧠
-
-↓
-
-Kalman Tracking 📍
-
-↓
-
-ROS2 🤖
-
-↓
-
-ESP32 ⚡
-
-↓
-
-Motors ⚙️
-
-</div>
-
-</section>
-
-
-
-<section>
-
-<h2>Tech Stack</h2>
-
-
-<div class="grid">
-
-
-<div class="card">
-<h3>Computer Vision</h3>
-<p>
-YOLO, OpenCV, NCNN optimization,
-real-time inference.
-</p>
-</div>
-
-
-<div class="card">
-<h3>Robotics</h3>
-<p>
-ROS2 nodes, topics, tracking,
-navigation.
-</p>
-</div>
-
-
-<div class="card">
-<h3>Embedded</h3>
-<p>
-ESP32, PWM control,
-motor drivers.
-</p>
-</div>
-
-
-</div>
-
-</section>
-
-
-
-<section>
-
-<h2>The Mission</h2>
-
-<p class="big-text">
-
-I am documenting every step — successes, failures,
-and engineering problems — while learning how modern robots are built.
-
-</p>
-
-
-</section>
-
-
-<footer>
-
-Built by Sam
-
-<br>
-
-<a href="https://www.linkedin.com/in/samrondel/" target="_blank">
-Connect on LinkedIn
-</a>
-
-</footer>
-
-
-
+      </div>
+      <div class="status-card">
+        <h3>Current status</h3>
+        <p>✅ YOLO beer detection</p>
+        <p>✅ Raspberry Pi edge inference</p>
+        <p>✅ ROS2 node pipeline</p>
+        <p>✅ Kalman tracking</p>
+        <p>✅ Raspberry Pi → ESP32 serial bridge</p>
+        <p>✅ AI command → PWM signal</p>
+        <p>🚧 Motor driver + real motors</p>
+        <p>⬜ Obstacle avoidance and navigation</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <p class="eyebrow">System architecture</p>
+      <h2>From camera pixels to motor commands</h2>
+      <div class="flow">
+        <span>Camera</span>
+        <span>YOLO</span>
+        <span>Tracker</span>
+        <span>Target Manager</span>
+        <span>ESP32 Bridge</span>
+        <span>PWM + Motors</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <p class="eyebrow">Latest resources</p>
+      <h2>Engineering diagrams from the build</h2>
+      <div class="grid">
+        <a class="card-link" href="notes.html#tracker-node">
+          <img src="assets/tracker-node-pipeline.png" alt="Tracker node pipeline diagram" />
+          <h3>Tracker Node Pipeline</h3>
+          <p>How YOLO detections become smoother tracked targets for robot control.</p>
+        </a>
+        <a class="card-link" href="notes.html#kalman-filter">
+          <img src="assets/kalman-filter-deep-dive.png" alt="Kalman filter explanation" />
+          <h3>Kalman Filter Deep Dive</h3>
+          <p>The prediction-correction loop behind beer tracking.</p>
+        </a>
+        <a class="card-link" href="journey.html#day20">
+          <img src="assets/day20-ai-command-to-pwm.png" alt="AI command to PWM signal diagram" />
+          <h3>AI Command → PWM</h3>
+          <p>Turning robot decisions into electrical pulses on the ESP32.</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="section cta">
+      <h2>Follow the daily build</h2>
+      <p>
+        The public resources explain the ideas. Later, the full build kit will package the exact code,
+        wiring, setup scripts, and troubleshooting into one repeatable system.
+      </p>
+      <div class="buttons">
+        <a class="primary" href="journey.html">Start with Day 1 →</a>
+        <a class="secondary" href="https://linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Built by YOUR_NAME — AI Beer Robot project</p>
+  </footer>
 </body>
-
 </html>
